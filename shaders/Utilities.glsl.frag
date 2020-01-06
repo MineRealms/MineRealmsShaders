@@ -29,6 +29,9 @@ float16_t noise(f16vec2 p) {
 	u.y), -1.0f);
 }
 
+//==============================================================================
+// Vertex stuff
+//==============================================================================
 #ifdef _VERTEX_SHADER_
 
 uniform int worldTime;
@@ -67,7 +70,7 @@ void calcCommons() {
 	extShadow = (clamp((wTimeF-12350.0)/100.0,0.0,1.0)-clamp((wTimeF-13050.0)/100.0,0.0,1.0) + clamp((wTimeF-22800.0)/200.0,0.0,1.0)-clamp((wTimeF-23400.0)/200.0,0.0,1.0));
 
 	#ifndef SPACE
-	const vec3 ambient_sunrise = vec3(0.543, 0.772, 0.786) * 0.27;//我人傻了
+	const vec3 ambient_sunrise = vec3(0.543, 0.772, 0.786) * 0.27;
 	const vec3 ambient_noon = vec3(0.686, 0.702, 0.73) * 0.34;
 	const vec3 ambient_sunset = vec3(0.543, 0.772, 0.747) * 0.26;
 	const vec3 ambient_midnight = vec3(0.06, 0.088, 0.117) * 0.1;
@@ -83,7 +86,7 @@ void calcCommons() {
 
 #else
 //==============================================================================
-// 破碎物体
+// Fragment stuff
 //==============================================================================
 
 const vec2 circle_offsets[25] = vec2[25](
@@ -115,8 +118,7 @@ const vec2 circle_offsets[25] = vec2[25](
 );
 const float circle_count = 25.0;
 
-// 色彩调整
-// 分v3
+// Color adjustment
 
 const vec3 agamma = vec3(0.7 / gamma);
 
